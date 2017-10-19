@@ -1,6 +1,6 @@
 ## React-Redux Starter Kit
 
-##### Based on Cory House's project for Pluralsight: https://github.com/coryhouse/pluralsight-redux-starter
+#### Based on Cory House's project for Pluralsight: https://github.com/coryhouse/pluralsight-redux-starter
 
 But with many changes: Added TypeScript, upgraded React, Router, Bootstrap.
 
