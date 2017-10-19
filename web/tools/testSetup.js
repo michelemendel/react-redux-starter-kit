@@ -43,7 +43,7 @@ global.navigator = {
 
 documentRef = document;  //eslint-disable-line no-undef
 
-//Configure adapter for react
+// Configure adapter for react
 const enzyme = require("enzyme");
 const Adapter = require('enzyme-adapter-react-16');
 enzyme.configure({ adapter: new Adapter() });
