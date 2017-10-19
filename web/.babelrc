@@ -1,0 +1,14 @@
+{
+  "presets": [
+    "react",
+    [
+      "env",
+      {
+        "targets": {
+          "ie": 11
+        }
+      }
+    ]
+  ]
+}
+

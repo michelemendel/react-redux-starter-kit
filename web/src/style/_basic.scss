@@ -1,0 +1,19 @@
+@import "colors";
+
+// Main application as defined in index_template.html
+#app {
+  font: 16px 'Verdana', Helvetica, Arial, sans-serif;
+  color: $dark;
+  min-width: 550px;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.home, .about, .courses, .course-form {
+  font-size: 0.75em;
+}

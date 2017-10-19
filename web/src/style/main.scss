@@ -1,0 +1,14 @@
+@import "~bootstrap/dist/css/bootstrap-reboot.css";
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap/dist/css/bootstrap-grid.css";
+
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+
+@import "~toastr/build/toastr";
+
+@import "colors";
+@import "basic";
+@import "header-footer";
+@import "table";
+@import "form";
