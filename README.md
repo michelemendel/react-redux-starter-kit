@@ -2,7 +2,7 @@
 
 #### Based on Cory House's project for Pluralsight: https://github.com/coryhouse/pluralsight-redux-starter
 
-But with many changes: Added TypeScript, upgraded React, Router, Bootstrap.
+But with many changes: Added TypeScript, upgraded React, Router, Bootstrap, ...
 
 
 #### Installation and start
