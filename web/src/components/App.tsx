@@ -1,7 +1,7 @@
 import * as React from "react";
 import {connect} from "react-redux";
 // Router
-import {BrowserRouter, HashRouter, ConnectedRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter} from "react-router-dom";
 import initRoutes from "../routes";
 // Application
 import Header from "./common/Header";
