@@ -8,6 +8,7 @@ import reduxImmutableStateInvariant from "redux-immutable-state-invariant";
 
 export default function configureStore(history, initialState?) {
 
+    // Connect to Chrome Redux plugin
     const windowIfDefined = typeof window === "undefined" ? null : window as any;
     const composeEnhancers = windowIfDefined.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
