@@ -24,7 +24,6 @@
         "type": "git",
         "url": ""
     },
-    "dependencies": {},
     "devDependencies": {
         "@types/chai": "4.0.3",
         "@types/mocha": "2.2.41",
@@ -64,7 +63,7 @@
         "jquery": "3.2.1",
         "jsdom": "11.1.0",
         "mocha": "3.5.0",
-        "mocha-webpack": "0.7.0",
+        "mocha-webpack": "1.0.1",
         "nock": "9.0.14",
         "node-sass": "4.5.3",
         "npm-run-all": "4.0.2",

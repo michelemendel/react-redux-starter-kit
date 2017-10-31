@@ -97,8 +97,7 @@ const config = {
 
         // Creates an index.html file.
         new HtmlWebpackPlugin({
-            // Somehow we need to help HtmlWebpackPlugin to find the relevant files when mocha-webpack is running.
-            template: isTest ? "../../src/index_template.html" : "src/index_template.html",
+            template: "src/index_template.html",
             filename: "index.html", // Relative to output.path (target/dist/)
             inject: true
         }),
