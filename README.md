@@ -10,7 +10,8 @@ But with many changes: Added TypeScript, upgraded React, Router, Bootstrap, ...
 1. Clone react-redux-starterkit
 1. Go to web/
 1. npm install
-1. npm start:mocked
+1. npm run start:mocked
+1. Go to http://localhost:9090
 
 See package.json for more scripts.
 
