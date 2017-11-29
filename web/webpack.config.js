@@ -107,7 +107,7 @@ const config = {
     ],
 
     devServer: {
-        port: 9090,
+        port: 9091,
         compress: true,
         // historyApiFallback: true,
         hot: true
@@ -127,16 +127,14 @@ const config = {
 };
 
 if (isProduction) {
-    console.log("Minifying");
+    console.log("--- Minifying");
 
+    // noinspection Annotator
     config.plugins = config.plugins.concat([
-        // Removes some dead code.
         new webpack.DefinePlugin({
-            "process.env": {
-                "NODE_ENV": JSON.stringify("production")
-            }
+          'process.env.NODE_ENV': JSON.stringify('production')
         }),
-        // new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}}),
+        new webpack.optimize.UglifyJsPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
         failplugin
     ]);
