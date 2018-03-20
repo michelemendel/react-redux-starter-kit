@@ -8,8 +8,8 @@ function setup(saving) {
         allAuthors: [],
         saving: saving,
         errors: {},
-        // onSave: () => {},
-        // onChange: () => {}
+        onSave: () => {},
+        onChange: () => {}
     };
 
     return shallow(<CourseForm {...props} />);

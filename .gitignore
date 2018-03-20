@@ -15,3 +15,5 @@ npm-debug.*
 .project
 
 *.temp.*
+
+coverage/
