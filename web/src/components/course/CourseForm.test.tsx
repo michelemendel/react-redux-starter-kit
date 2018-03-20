@@ -1,5 +1,4 @@
 import * as React from "react";
-import expect from "expect";
 import {mount, shallow} from "enzyme";
 import CourseForm from "./CourseForm";
 
@@ -9,8 +8,8 @@ function setup(saving) {
         allAuthors: [],
         saving: saving,
         errors: {},
-        onSave: () => {},
-        onChange: () => {}
+        // onSave: () => {},
+        // onChange: () => {}
     };
 
     return shallow(<CourseForm {...props} />);

@@ -1,5 +1,4 @@
 import * as React from "react";
-import expect from "expect";
 import {mount, shallow} from "enzyme";
 import {noOpRetVoid} from "../../common/utils";
 import {ManageCoursePage} from "./ManageCoursePage";

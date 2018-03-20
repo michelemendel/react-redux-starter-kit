@@ -1,4 +1,3 @@
-import expect from "expect";
 import courseReducer from "./courseReducer";
 import * as actions from "../actions/courseActions";
 
@@ -16,10 +15,10 @@ describe("Course Reducer", () => {
         const newState = courseReducer(initialState, action);
 
         // Assert
-        expect(newState.length).toEqual(3);
-        expect(newState[0].title).toEqual("A");
-        expect(newState[1].title).toEqual("B");
-        expect(newState[2].title).toEqual("C");
+        expect(newState.length).toBe(3);
+        expect(newState[0].title).toBe("A");
+        expect(newState[1].title).toBe("B");
+        expect(newState[2].title).toBe("C");
     });
 
     it("should update course when passed UPDATE_COURSE_SUCCESS", () => {

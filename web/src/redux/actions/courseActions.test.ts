@@ -1,4 +1,3 @@
-import expect from "expect";
 import * as courseActions from "./courseActions";
 import {actionTypes as types} from "../../common/constants";
 
