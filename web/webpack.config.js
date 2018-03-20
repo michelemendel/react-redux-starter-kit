@@ -4,19 +4,23 @@ console.log("--- MAIN (webpack.config.js) ---\n");
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const failplugin = require("webpack-fail-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const isProduction = process.env.NODE_ENV === "production";
 const isDevelopment = process.env.NODE_ENV === "development";
 const isTest = process.env.NODE_ENV === "test";
 const isMocked = process.env.MOCKED === "mocked";
 
-console.log("prod|dev|test|mocked:", isProduction + "|" + isDevelopment + "|" + isTest + "|" + isMocked);
+console.log("prod:", isProduction);
+console.log("dev:", isDevelopment);
+console.log("test:", isTest);
+console.log("mocked:", isMocked);
+
 console.log("dirname:", __dirname);
 
 const GLOBALS = {
-    'process.env': {
+    "process.env": {
         PRODUCTION: isProduction,
         MOCKED: isMocked
     }
@@ -27,14 +31,32 @@ const extractSass = new ExtractTextPlugin({
     // disable: isDevelopment //If you turn this on, the screen will flash on initial page load (FOUC - Flash On Unstyled Content).
 });
 
+const bundle = path.resolve(__dirname, "src/app.tsx");
+const vendor = [
+    "babel-polyfill",
+    "jquery",
+    "react",
+    "react-dom",
+    "react-redux",
+    "react-router-dom",
+    "react-router-redux",
+    "react-transition-group",
+    "reactstrap",
+    "redux",
+    "redux-immutable-state-invariant",
+    "redux-logger",
+    "toastr",
+    "whatwg-fetch",
+];
+
 const config = {
-    entry: {
-        bundle: path.resolve(__dirname, "src/app.tsx")
-    },
+    entry: isTest
+        ? {bundle}
+        : {bundle, vendor},
 
     output: {
         path: path.resolve(__dirname, "target/dist/"),
-        publicPath: isProduction ? './' : '/', // Path to public resource, like bundle.js, images, files...
+        publicPath: isProduction ? "./" : "/", // Path to public resource, like bundle.js, images, files...
         filename: isProduction ? "[name].[hash].js" : "[name].js" //For production we use cache busting.
     },
 
@@ -53,8 +75,8 @@ const config = {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
                 use: [
-                    'babel-loader',
-                    'ts-loader'
+                    "babel-loader",
+                    "ts-loader"
                 ]
             },
             {
@@ -88,7 +110,7 @@ const config = {
             {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use: "url-loader?limit=10000&mimetype=image/svg+xml"},
 
             // images
-            {test: /\.(png|jpg|jpeg|gif)$/, use: 'url-loader?limit=100000'},
+            {test: /\.(png|jpg|jpeg|gif)$/, use: "url-loader?limit=100000"},
         ]
     },
 
@@ -107,7 +129,7 @@ const config = {
     ],
 
     devServer: {
-        port: 9091,
+        port: 8080,
         compress: true,
         // historyApiFallback: true,
         hot: true
@@ -126,17 +148,28 @@ const config = {
     }
 };
 
+if (!isTest) {
+    config.plugins = config.plugins.concat([
+        // Creates a file with packages common to all config.entries.
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "commons",
+        }),
+    ]);
+}
+
 if (isProduction) {
     console.log("--- Minifying");
 
     // noinspection Annotator
     config.plugins = config.plugins.concat([
-        new webpack.DefinePlugin({
-          'process.env.NODE_ENV': JSON.stringify('production')
+        new BundleAnalyzerPlugin({
+            analyzerMode: "disabled", //server (default), static, disabled
+            openAnalyzer: true, //Automatically open report in browser
+            generateStatsFile: false, //stats.json in bundle output directory
+            logLever: "info", //info (default), warn, error, silent
         }),
-        new webpack.optimize.UglifyJsPlugin(),
+
         new webpack.optimize.AggressiveMergingPlugin(),
-        failplugin
     ]);
 }
 

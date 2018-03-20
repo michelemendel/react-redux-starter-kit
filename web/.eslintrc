@@ -1,7 +1,8 @@
 {
   "settings": {
     "import/extensions": [
-      ".ts", ".tsx"
+      ".ts",
+      ".tsx"
     ]
   },
   "parser": "typescript-eslint-parser",
@@ -46,7 +47,10 @@
     "no-debugger": 1,
     "no-undef": 0,
     "no-var": 1,
-    "quotes": 0,
+    "quotes": [
+      "error",
+      "double"
+    ],
     "semi": [
       1,
       "always"
