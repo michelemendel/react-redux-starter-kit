@@ -3,4 +3,5 @@ module.exports = {
     setupFiles: [
         "./src/setupJest.js"
     ],
+    testMatch: ["**/target/**/*.test.js?(x)"]
 };

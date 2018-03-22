@@ -1,23 +1,23 @@
 {
-  "compilerOptions": {
-    "moduleResolution": "node",
-    "module": "es6",
-    "jsx": "react",
-    "target": "es6",
-    "outDir": "./target/ts-build/",
-    "sourceMap": true,
-    // Set to true to see se all types missing.
-    "noImplicitAny": false,
-    // Babel will handle the transpilation.
-    "allowJs": true,
-    "strictNullChecks": false
-  },
-  "exclude": [
-    "node_modules",
-    "target",
-    "webpack.config.js"
-  ],
-  "include": [ // Probably not necessary
-    "src/**/*.ts*"
-  ]
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "module": "es6",
+        "jsx": "react",
+        "target": "es6",
+        "rootDir": "./src",
+        // Only used by IntelliJ, not by Webpack
+        "outDir": "./target/ts_build/",
+        "sourceMap": true,
+        // Set to true to see se all types missing.
+        "noImplicitAny": false,
+        // Babel will handle the transpilation.
+//        "allowJs": true,
+        "strictNullChecks": false,
+        "allowSyntheticDefaultImports": true
+    },
+    "exclude": [
+        "node_modules",
+        "target",
+        "webpack.config.js"
+    ]
 }

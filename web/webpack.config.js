@@ -50,14 +50,12 @@ const vendor = [
 ];
 
 const config = {
-    entry: isTest
-        ? {bundle}
-        : {bundle, vendor},
+    entry: {bundle, vendor},
 
     output: {
         path: path.resolve(__dirname, "target/dist/"),
         publicPath: isProduction ? "./" : "/", // Path to public resource, like bundle.js, images, files...
-        filename: isProduction ? "[name].[hash].js" : "[name].js" //For production we use cache busting.
+        filename: isProduction ? "[name].[chunkhash].js" : "[name].js" //For production we use cache busting.
     },
 
     target: "web",
@@ -125,14 +123,22 @@ const config = {
         }),
         new webpack.DefinePlugin(GLOBALS),
 
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "vendor",
+        }),
+
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "commons",
+        }),
+
+        // new webpack.HotModuleReplacementPlugin()
     ],
 
     devServer: {
-        port: 8080,
+        port: 9090,
         compress: true,
         // historyApiFallback: true,
-        hot: true
+        // hot: true
 
         // Setup proxy between Node and a web server
         // proxy: {
@@ -148,26 +154,19 @@ const config = {
     }
 };
 
-if (!isTest) {
-    config.plugins = config.plugins.concat([
-        // Creates a file with packages common to all config.entries.
-        new webpack.optimize.CommonsChunkPlugin({
-            name: "commons",
-        }),
-    ]);
-}
-
 if (isProduction) {
     console.log("--- Minifying");
 
     // noinspection Annotator
     config.plugins = config.plugins.concat([
         new BundleAnalyzerPlugin({
-            analyzerMode: "disabled", //server (default), static, disabled
+            analyzerMode: "static", //server (default), static, disabled
             openAnalyzer: true, //Automatically open report in browser
             generateStatsFile: false, //stats.json in bundle output directory
             logLever: "info", //info (default), warn, error, silent
         }),
+
+        new webpack.HashedModuleIdsPlugin(),
 
         new webpack.optimize.AggressiveMergingPlugin(),
     ]);
