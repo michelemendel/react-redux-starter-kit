@@ -16,7 +16,6 @@ console.log("prod:", isProduction);
 console.log("dev:", isDevelopment);
 console.log("test:", isTest);
 console.log("mocked:", isMocked);
-
 console.log("dirname:", __dirname);
 
 const GLOBALS = {
@@ -121,6 +120,7 @@ const config = {
             filename: "index.html", // Relative to output.path (target/dist/)
             inject: true
         }),
+
         new webpack.DefinePlugin(GLOBALS),
 
         new webpack.optimize.CommonsChunkPlugin({

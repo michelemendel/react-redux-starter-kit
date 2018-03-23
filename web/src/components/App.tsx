@@ -5,6 +5,7 @@ import {BrowserRouter, HashRouter} from "react-router-dom";
 import initRoutes from "../routes";
 // Application
 import Header from "./common/Header";
+import ErrorBoundary from "./ErrorBoundary";
 
 interface IProps {
     loading: boolean
@@ -13,16 +14,18 @@ interface IProps {
 class App extends React.Component<IProps, {}> {
     render() {
         return (
-            <HashRouter>
-                <div className="container-fluid">
-                    <Header loading={this.props.loading}/>
+            <ErrorBoundary>
+                <HashRouter>
+                    <div className="container-fluid">
+                        <Header loading={this.props.loading}/>
 
-                    <hr/>
+                        <hr/>
 
-                    {initRoutes()}
+                        {initRoutes()}
 
-                </div>
-            </HashRouter>
+                    </div>
+                </HashRouter>
+            </ErrorBoundary>
         );
     }
 }
