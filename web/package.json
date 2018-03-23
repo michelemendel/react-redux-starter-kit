@@ -18,7 +18,8 @@
         "build:prod": "npm-run-all lint build:prod:skiptests test",
         "build:dev": "npm-run-all lint build:dev:skiptests test",
         "build": "npm run build:dev:skiptests",
-        "build:ts": "rimraf target/ts_build && tsc -m es6 --outDir target/ts_build"
+        "build:ts": "rimraf target/ts_build && tsc -m es6 --outDir target/ts_build",
+        "patch": "npm version patch"
     },
     "author": "Michele Mendel",
     "license": "MIT",
