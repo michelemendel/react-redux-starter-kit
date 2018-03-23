@@ -131,6 +131,7 @@ const config = {
             name: "commons",
         }),
 
+        // Doesn't agree with chunkhash
         // new webpack.HotModuleReplacementPlugin()
     ],
 
