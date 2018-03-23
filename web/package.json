@@ -1,6 +1,6 @@
 {
     "name": "react-redux-starter-kit",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Starter kit for React and Redux based on starter kit by Cory House",
     "scripts": {
         "start": "npm-run-all --parallel lint:watch devserver",
