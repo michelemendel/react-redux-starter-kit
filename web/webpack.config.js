@@ -161,7 +161,7 @@ if (isProduction) {
 
         new webpack.HashedModuleIdsPlugin(),
 
-        new webpack.optimize.AggressiveMergingPlugin(),
+        //new webpack.optimize.AggressiveMergingPlugin(),
     ]);
 }
 
