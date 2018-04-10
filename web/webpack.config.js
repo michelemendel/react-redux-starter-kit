@@ -30,7 +30,7 @@ const extractSass = new ExtractTextPlugin({
     // disable: isDevelopment //If you turn this on, the screen will flash on initial page load (FOUC - Flash On Unstyled Content).
 });
 
-const bundle = path.resolve(__dirname, "target/ts_build/app.js");
+const bundle = path.resolve(__dirname, "src/app.tsx");
 const vendor = [
     "babel-polyfill",
     "jquery",
@@ -63,11 +63,19 @@ const config = {
     devtool: isProduction ? "source-map" : "eval-source-map",
 
     resolve: {
-        extensions: [".js", ".jsx"]
+        extensions: [".ts", ".tsx", ".js", ".jsx"]
     },
 
     module: {
         rules: [
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                use: [
+                    "babel-loader",
+                    "ts-loader"
+                ]
+            },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
