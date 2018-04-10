@@ -3,8 +3,8 @@
     "version": "1.0.1",
     "description": "Starter kit for React and Redux based on starter kit by Cory House",
     "scripts": {
-        "start": "npm-run-all --parallel lint:watch devserver",
-        "start:mocked": "npm-run-all --parallel lint:watch devserver:mocked",
+        "start": "npm run build:ts && npm run copy:style && npm-run-all --parallel lint:watch devserver",
+        "start:mocked": "npm run build:ts && npm run copy:style && npm-run-all --parallel lint:watch devserver:mocked",
         "devserver": "cross-env NODE_ENV=development webpack-dev-server",
         "devserver:mocked": "cross-env NODE_ENV=development MOCKED=mocked webpack-dev-server",
         "lint": "esw webpack.config.js src/**/*.ts  src/**/*.tsx",
