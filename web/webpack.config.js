@@ -30,7 +30,7 @@ const extractSass = new ExtractTextPlugin({
     // disable: isDevelopment //If you turn this on, the screen will flash on initial page load (FOUC - Flash On Unstyled Content).
 });
 
-const bundle = path.resolve(__dirname, "src/app.tsx");
+const bundle = path.resolve(__dirname, "target/ts_build/app.js");
 const vendor = [
     "babel-polyfill",
     "jquery",
@@ -63,19 +63,11 @@ const config = {
     devtool: isProduction ? "source-map" : "eval-source-map",
 
     resolve: {
-        extensions: [".ts", ".tsx", ".js", ".jsx"]
+        extensions: [".js", ".jsx"]
     },
 
     module: {
         rules: [
-            {
-                test: /\.tsx?$/,
-                exclude: /node_modules/,
-                use: [
-                    "babel-loader",
-                    "ts-loader"
-                ]
-            },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -161,15 +153,13 @@ if (isProduction) {
     // noinspection Annotator
     config.plugins = config.plugins.concat([
         new BundleAnalyzerPlugin({
-            analyzerMode: "static", //server (default), static, disabled
+            analyzerMode: "disabled", //server (default), static, disabled
             openAnalyzer: true, //Automatically open report in browser
             generateStatsFile: false, //stats.json in bundle output directory
             logLever: "info", //info (default), warn, error, silent
         }),
 
         new webpack.HashedModuleIdsPlugin(),
-
-        new webpack.optimize.AggressiveMergingPlugin(),
     ]);
 }
 
