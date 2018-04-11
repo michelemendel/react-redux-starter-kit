@@ -33,6 +33,7 @@ See package.json for more scripts.
 * Style
   * pre-processing: SASS
   * Bootstrap v4
+  * Fontawesome 5 (SVG with JS)
 * Test
   * mocha
   * chai or expect
@@ -41,6 +42,7 @@ See package.json for more scripts.
   * (nock)
 * demo
 
+
 #### About react-router
 
 Routing with hash er default. To use BrowserRouter (see App.tsx) the server has to be configured correctly.
@@ -48,6 +50,12 @@ Routing with hash er default. To use BrowserRouter (see App.tsx) the server has 
 To use BrowserRouter:
 
 * App.tsx:render(): Change from HashRouter to BrowserRouter
+
+
+#### Fontawesome and React
+
+ * [js-component-packages](https://fontawesome.com/how-to-use/js-component-packages)
+ * [react-fontawesome usage](https://www.npmjs.com/package/@fortawesome/react-fontawesome) 
 
 
 #### Misc
